@@ -12,8 +12,8 @@ router.get('/author', function(req, res, next){
 		title: 'Quiz', autores: 'David de Andrés y Diego Martín Crespo',
 		video1:'<iframe width="560" height="315" src="https://www.youtube.com/embed/jO2ecDT6Vgw" frameborder="0" allowfullscreen></iframe>',
 		video2: '<iframe width="560" height="315" src="https://www.youtube.com/embed/iCme0HRgd0U" frameborder="0" allowfullscreen></iframe>',
-		foto1: '<img src="../public/images/Davideandres.jpg" alt="David de Andres">',
-		foto2: '<img src="../public/images/diegomartin.jpg" alt="Diego Martín">'
+		foto1: '<img src="/images/Davideandres.jpg" alt="David de Andres">',
+		foto2: '<img src="/images/diegomartin.jpg" alt="Diego Martín" style="width:200px; height:200px">'
 	})
 });
 
