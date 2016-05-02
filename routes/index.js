@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var quizController = require('../controllers/quiz_Controller')
 
 /* GET home page. */
 
@@ -8,7 +9,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/question', quizController.question);
-router.get('/ckeck', quizController.check);
+router.get('/check', quizController.check);
 
 router.get('/author', function(req, res, next){
 	res.render('author', { github:'<a href="https://github.com/davideandres95/quiz2">Proyecto en github</a>',
