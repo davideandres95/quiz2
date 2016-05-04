@@ -10,3 +10,4 @@ exports.check = function (req, res, next){
 	var result = req.query.answer === 'Roma' ? 'Correcta' : 'Incorrecta';
 	res.render('quizzes/result',{result: result, answer: answer});
 };
+
