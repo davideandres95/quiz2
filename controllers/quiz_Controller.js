@@ -1,3 +1,5 @@
+var models = require('../models');
+
 //GET /question
 exports.question = function(req, res, next){
 	models
