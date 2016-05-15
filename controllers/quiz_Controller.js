@@ -2,12 +2,22 @@ var models = require('../models');
 
 //GET / quizzes
 exports.index = function(req, res, next){
-	models
-	.Quiz
-	.findAll().then(function(quizzes) {
+	if (req.query.search !== undefined) {
+  		var searchStr = '%' + req.query.search.replace(' ', '%') + '%';
+  		models.Quiz.findAll({ where: ["question like ?", searchStr] })
+  		.then(function (quizzes) {
+  			res.render ('quizzes/index', { quizzes: quizzes});
+   		})
+   		.catch(function(error) { next(error); });
+  		}
+  	else{
+  		models
+		.Quiz
+		.findAll()	.then(function(quizzes) {
 		res.render ('quizzes/index', { quizzes: quizzes});
-	})
-	.catch(function(error) { next(error); });
+		})
+		.catch(function(error) {next(error); });
+  	}
 };	
 
 
