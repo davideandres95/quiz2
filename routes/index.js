@@ -7,10 +7,14 @@ router.get('/', function(req, res) {
 	res.render('index', { title: 'Quiz'});
 });
 
+//Autoload de rutas que usen :quizId
+router.param('quizId', quizController.load); //autoload :quizId
+
+
 //Definición de rutas de /quizzes
-router.get('/quizzes', 				 		quizController.index);
-router.get('/quizzes/:quizId(\\d+)', 		quizController.show);
-router.get('/quizzes/:quizId(\\d+)/check', 	quizController.check);
+router.get('/quizzes.:format?', 					quizController.index);
+router.get('/quizzes/:quizId(\\d+).:format?', 		quizController.show);
+router.get('/quizzes/:quizId(\\d+)/check', 			quizController.check);
 
 
 router.get('/author', function(req, res, next){

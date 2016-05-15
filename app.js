@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var app = express();
 var partials = require('express-partials');
+app.use(require('json-middleware').middleware());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
