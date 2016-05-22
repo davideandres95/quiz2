@@ -64,7 +64,7 @@ exports.show = function(req, res, next){
 	.catch(function(error) {next(error); });
 };
 
-//GET /check
+//GET /quizzes/:id/check
 exports.check = function (req, res, next){
 	models
 	.Quiz
