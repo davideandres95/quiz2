@@ -30,20 +30,18 @@ nav a 		{margin: 0px 10px 0px 0px;}
 #flashinfo{
 	font:16px Georgia, serif;
 	background-color: #ff9c6f;
-	color: white;
 }
 #flasherror{
 	font:16px Georgia, serif;
 	background-color: #ff584c;
-	color: white;
 }
 
 #flashsuccess{
-	font:16px Georgia, serif;
+	fon:16px Georgia, serif;
 	background-color: #56ff79;
-	color: black;
 }
 
-section>li{
+ul {
 	background-color: white;
+	padding-left: 2%;
 }
