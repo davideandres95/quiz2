@@ -25,8 +25,34 @@
 					<a href="/quizzes">Preguntas</a>
 				</nav>
 
+				<section>
+					<% if (messages.info) { %>
+						<article id="flashinfo">
+							<h3>Información de interés:</h3>
+							<ul>
+								<% for (var i in messages.info) {%>
+									<li> <%= messages.success[i]%></li>
+								<% }%>
+							</ul>
+						</article>
+					<% } %>
+
+					<% if (message.error) { %>
+						<article id="flasherror">
+							<h3>Errores encontrados</h3>
+							<ul>
+								<% for (var i in messages.error) { %>
+									<li> <%= messages.error[i]%></li>
+								<% } %>
+							</ul>
+						</article>
+					<% } %>
+				</section>
+
 				<section class="main">
-					<div><%- body %> </div>
+					<div>
+						<%- body %>
+					</div>
 				</section>	
 				
 				<footer class="main">
