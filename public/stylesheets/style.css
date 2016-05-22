@@ -15,8 +15,35 @@ a 			{	color: #00B7FF;	}
 section > div 	{	padding: 20px;	}
 
 header 		{	text-align: center;}
-nav			{	text-align: center;
+nav			{	text-align: center;}
 section		{	text-align: left;}
 footer		{ 	text-align: center;}
 
-nav a 		{margin: 0px 10px 0px 0px;}	
+nav a 		{margin: 0px 10px 0px 0px;}
+
+.flash-messages	{	border: 1px solid #999;
+					padding: 1%;
+					margin-bottom: 1px;
+					color: black;
+					background: #eee;	}
+
+#flashinfo{
+	font:16px Georgia, serif;
+	background-color: #ff9c6f;
+	color: white;
+}
+#flasherror{
+	font:16px Georgia, serif;
+	background-color: #ff584c;
+	color: white;
+}
+
+#flashsuccess{
+	font:16px Georgia, serif;
+	background-color: #56ff79;
+	color: black;
+}
+
+section>li{
+	background-color: white;
+}
