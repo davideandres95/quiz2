@@ -12,7 +12,7 @@ exports.load = function(req, res, next, quizId) {
 		next(new Error('No existe quizId=' + quizId));
 		}
 	}).catch(function(error) { next(error); });
-}
+};
 
 //GET / quizzes
 exports.index = function(req, res, next){
@@ -20,7 +20,12 @@ exports.index = function(req, res, next){
   		var searchStr = '%' + req.query.search.replace(' ', '%') + '%';
   		models.Quiz.findAll({ where: ["question like ?", searchStr] })
   		.then(function (quizzes) {
-  			res.render ('quizzes/index', { quizzes: quizzes});
+			if(req.params.format==='json'){
+				res.json(quizzes);
+				}
+			else{
+				res.render ('quizzes/index', { quizzes: quizzes});
+			}
    		})
    		.catch(function(error) { next(error); });
   		}
@@ -28,7 +33,12 @@ exports.index = function(req, res, next){
   		models
 		.Quiz
 		.findAll()	.then(function(quizzes) {
-		res.render ('quizzes/index', { quizzes: quizzes});
+			if(req.params.format==='json'){
+				res.json(quizzes);
+			}
+			else{
+				res.render ('quizzes/index', { quizzes: quizzes});
+			}
 		})
 		.catch(function(error) {next(error); });
   	}
@@ -43,7 +53,12 @@ exports.show = function(req, res, next){
 	.then (function(quiz) {
 		if(quiz) {
 			var answer = req.query.answer || '';
-			res.render('quizzes/show', {quiz: req.quiz, answer: answer});
+			if(req.params.format==='json') {
+				res.json(quizzes);
+			}
+			else{
+				res.render('quizzes/show', {quiz: req.quiz, answer: answer});
+			}
 		} else { throw new Error('No existe ese quiz en la BBDD.'); }
 	})
 	.catch(function(error) {next(error); });
