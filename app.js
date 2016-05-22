@@ -10,6 +10,8 @@ var app = express();
 var session = require('express-session');
 var partials = require('express-partials');
 var flash = require('express-flash');
+var methodOverride = require('method-override');
+
 app.use(require('json-middleware').middleware());
 
 // view engine setup
@@ -29,6 +31,7 @@ app.use(cookieParser());
 app.use(session({secret: "Quiz 2016",
                           resave: false,
                           saveUninitialized: true}));
+app.use(methodOverride('_method', {methods: ["POST", " GET"]}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
