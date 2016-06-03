@@ -1,17 +1,29 @@
 var express = require('express');
 var router = express.Router();
 var quizController = require('../controllers/quiz_Controller');
+var commentController = require('../controllers/comment_controller');
 
 //pagina de Entrada
 router.get('/', function(req, res) {
 	res.render('index', { title: 'Quiz'});
 });
 
-//Autoload de rutas que usen :quizId
+//Autoload de parametros
 router.param('quizId', quizController.load); //autoload :quizId
+router.param('userId', userController.load); //autoload :userId
+
+//GESTION DE RUTAS DE CUENTAS
+router.get('/users',								userController.index);		//listado de usuarios
+router.get('/users/:userId(\\d+)',					userController.show);		//ver un usuario
+router.get('/users/new',							userController.new);		//formulario sign up
+router.post('/users',								userController.create);		//registrar usuario
+router.get('/users/:userId(\\d+)/edit',				userController.edit);		//editar cuenta
+router.put('/users/:userId(\\d+)',					userController.update);		//actualizar cuenta
+router.delete('/users/:userId(\\d+)',				userController.destroy);	//borrar cuenta
 
 
-//Definición de rutas de /quizzes
+
+//GESTION DE QUIZZES
 router.get('/quizzes.:format?', 					quizController.index);
 router.get('/quizzes/:quizId(\\d+).:format?', 		quizController.show);
 router.get('/quizzes/:quizId(\\d+)/check', 			quizController.check);
@@ -21,7 +33,11 @@ router.get('/quizzes/:quizId(\\d+)/edit',			quizController.edit);
 router.put('/quizzes/:quizId(\\d+)',				quizController.update);
 router.delete('/quizzes/:quizId(\\d+)', 			quizController.destroy);
 
+//GESTION DE COMENTARIOS
+router.get('/quizzes/:quizId(\\d+)/comments/new',	commentController.new);
+router.post('/quizzes/:quizId(\\d+)/comments',		commentController.create);
 
+//GESTION DE AUTORES
 router.get('/author', function(req, res, next){
 	res.render('author', { github:'<a href="https://github.com/davideandres95/quiz2">Proyecto en github</a>',
 		title: 'Quiz', autores: 'David de Andrés y Diego Martín Crespo',
