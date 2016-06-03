@@ -20,7 +20,7 @@ exports.load = function(req, res, next, userId) {
 exports.index = function ( req, res, next) {
     models.User.findAll( {order: ['username']})
         .then(function(users) {
-            res.render('users.index', { users: users});
+            res.render('users/index', { users: users});
         })
         .catch(function(error) {
             next(error);

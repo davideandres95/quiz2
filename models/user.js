@@ -27,3 +27,13 @@ module.exports = function(sequelize, DataTypes) {
                 }
     });
 };
+
+/*
+ *Encripta  un password en claro.
+ *Mezcla un salt en claro con el salt proporcionado, ejecuta un SHA1 digest
+ * y devuelve 40 caracteres hexadecimales.
+ */
+
+function encryptPssword(password, salt){
+    return crypto.createHmac('sha1', salt).update(password).digest('hex');
+};
