@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var quizController = require('../controllers/quiz_Controller');
 var commentController = require('../controllers/comment_controller');
+var userController = require('../controllers/user_Controller');
 
 //pagina de Entrada
 router.get('/', function(req, res) {
@@ -11,6 +12,7 @@ router.get('/', function(req, res) {
 //Autoload de parametros
 router.param('quizId', quizController.load); //autoload :quizId
 router.param('userId', userController.load); //autoload :userId
+router.param('userId', commentController.load); //autoload : userID
 
 //GESTION DE RUTAS DE CUENTAS
 router.get('/users',								userController.index);		//listado de usuarios
