@@ -24,8 +24,15 @@ module.exports = function(sequelize, DataTypes) {
                 isAdmin: {
                     type: DataTypes.BOOLEAN,
                     defaultValue: false
-                }
-    });
+                },
+                createdAt: {type : Sequelize.DATE,
+                            allowNull: false},
+                updatedAt: {type : Sequelize.DATE,
+                            allowNull: false}
+        },
+        {sync: {force:true}
+        }
+    );
 };
 
 /*

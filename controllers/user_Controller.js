@@ -79,7 +79,7 @@ exports.edit = function(req, res, next) {
     res.render('users/edit', { user: req.user});
 };   //req.user: instancia de user cargada con autoload
 
-//PUT/useres/:id
+//PUT/usres/:id
 exports.update = function (req, res, next) {
     //req.user.username = req.body.user.username; // No editar
     req.user.password = req.body.user.password;
