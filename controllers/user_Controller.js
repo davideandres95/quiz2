@@ -82,7 +82,7 @@ exports.edit = function(req, res, next) {
 //PUT/users/:id
 exports.update = function (req, res, next) {
     //req.user.username = req.body.user.username; // No editar
-    req.user.password = req.body.user.password;
+    req.user.password = req.body.user   .password;
 
     //El password no puede estar vacio
     if( ! req.body.user.password) {

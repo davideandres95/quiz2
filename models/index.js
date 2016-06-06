@@ -29,9 +29,13 @@ var Comment = sequelize.import(path.join(__dirname, 'comment'));
 var User = sequelize.import(path.join(__dirname, 'user'));
 
 
-//Relaciones entre modelos
+//Relacion 1 a N entre Quiz y comments
 Comment.belongsTo(Quiz);
 Quiz.hasMany(Comment);
+
+//Relacion 1 a N entre Quiz y comments
+User.hasMany(Quiz, {foreignKey: 'AuthorId'});
+Quiz.belongsTo(User, {as: 'Author', foreignKey: 'AuthorId'});
 
 exports.Quiz = Quiz; 	// exportar definición de tabla quiz
 exports.Comment = Comment; //exportar definición de tabla comment
