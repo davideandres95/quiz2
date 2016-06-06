@@ -12,7 +12,6 @@ router.get('/', function(req, res) {
 //Autoload de parametros
 router.param('quizId', quizController.load); //autoload :quizId
 router.param('userId', userController.load); //autoload :userId
-router.param('userId', commentController.load); //autoload : userID
 
 //GESTION DE RUTAS DE USUARIOS
 
@@ -21,7 +20,7 @@ router.get('/users/:userId(\\d+)',					userController.show);		//ver un usuario
 router.get('/users/new',							userController.new);		//formulario sign up
 router.post('/users',								userController.create);		//registrar usuario
 router.get('/users/:userId(\\d+)/edit',				userController.edit);		//editar cuenta
-router.put('/users/:userId(\\d+)',					userController.update);		//actualizar cuenta
+router.post('/users/:userId(\\d+)',					userController.update);		//actualizar cuenta
 router.delete('/users/:userId(\\d+)',				userController.destroy);	//borrar cuenta
 
 //GESTION DE QUIZZES
@@ -31,7 +30,7 @@ router.get('/quizzes/:quizId(\\d+)/check', 			quizController.check);
 router.get('/quizzes/new',							quizController.new);
 router.post('/quizzes', 							quizController.create);
 router.get('/quizzes/:quizId(\\d+)/edit',			quizController.edit);
-router.put('/quizzes/:quizId(\\d+)',				quizController.update);
+router.post('/quizzes/:quizId(\\d+)',				quizController.update);
 router.delete('/quizzes/:quizId(\\d+)', 			quizController.destroy);
 
 //GESTION DE COMENTARIOS

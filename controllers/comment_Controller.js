@@ -1,20 +1,6 @@
 var models = require ('../models');
 var Sequilize = require ('sequelize');
 
-//Autoload el quiz asociado a :quizId
-exports.load = function (req, res, next, quizId) {
-    models.Quiz.findById ( quizId, { include: [ models.Comment ] })
-        .then( function (quiz) {
-            if (quiz) {
-                req.quiz = quiz;
-                next();
-            } else {
-                throw new  Error ('No existe  quizId =' + quizId );
-            }
-        })
-        .catch(function(error) {next(error);});
-};
-
 //GET /quizzes/:quizId/comments/new
 exports.new = function (req, res, next) {
     var comment = models.Comment.build({text: ""});

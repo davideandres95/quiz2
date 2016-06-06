@@ -79,7 +79,7 @@ exports.edit = function(req, res, next) {
     res.render('users/edit', { user: req.user});
 };   //req.user: instancia de user cargada con autoload
 
-//PUT/usres/:id
+//PUT/users/:id
 exports.update = function (req, res, next) {
     //req.user.username = req.body.user.username; // No editar
     req.user.password = req.body.user.password;
@@ -89,7 +89,7 @@ exports.update = function (req, res, next) {
         req.flash('error', "El campo Password debe rellenarse.");
         return res.render('users/edit', {user: req.user});
     }
-    req.user.save({fields: ["password", " salt"]})
+    req.user.save({fields: ["password", "salt"]})
         .then(function (user) {
             req.flash('success', 'Usuario actualizado con exito.');
             res.redirect('/users'); //REDIRECCIONO
