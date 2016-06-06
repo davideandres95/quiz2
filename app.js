@@ -20,6 +20,16 @@ app.set('view engine', 'ejs');
 
 app.use(partials());
 app.use(flash());
+app.use(session({ secret:"Quiz 2016",
+                  resave: false,
+                  saveUninitialized: true}));
+
+//Helper dinamico
+app.use(function(req, res, next) {
+  //Hacer visible req.session en las vistas
+  res.locals.session = req.session;
+  next();
+});
 
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
