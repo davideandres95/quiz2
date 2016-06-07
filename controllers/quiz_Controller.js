@@ -58,7 +58,7 @@ exports.show = function(req, res, next){
 				res.json(quizzes);
 			}
 			else{
-				res.render('quizzes/show', {quiz: req.quiz, answer: answer});
+				res.render('quizzes/show', {quiz: req.quiz, answer: answer, author: req.quiz.AuthorId});
 			}
 		} else { throw new Error('No existe ese quiz en la BBDD.'); }
 	})
