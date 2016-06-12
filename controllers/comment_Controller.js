@@ -12,9 +12,16 @@ exports.new = function (req, res, next) {
 
 //POST /quizzes/:quizId/comments
 exports.create = function (req, res, next) {
+    var author;
+    if(req.session.user){
+        author=req.session.user.id;
+    } else {
+        author='unregistered';
+    }
     var comment = models.Comment.build(
         { text: req.body.comment.text,
-            QuizId: req.quiz.id
+            QuizId: req.quiz.id,
+            authorId: author
         });
 
     comment.save()
