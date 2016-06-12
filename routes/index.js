@@ -26,23 +26,23 @@ router.get('/users',								userController.index);		//listado de usuarios
 router.get('/users/:userId(\\d+)',					userController.show);		//ver un usuario
 router.get('/users/new',							userController.new);		//formulario sign up
 router.post('/users',								userController.create);		//registrar usuario
-router.get('/users/:userId(\\d+)/edit',				userController.edit);		//editar cuenta
-router.post('/users/:userId(\\d+)',					userController.update);		//actualizar cuenta
-router.delete('/users/:userId(\\d+)',				userController.destroy);	//borrar cuenta
+router.get('/users/:userId(\\d+)/edit',				sessionController.loginRequired, userController.edit);		//editar cuenta
+router.post('/users/:userId(\\d+)',					sessionController.loginRequired, userController.update);		//actualizar cuenta
+router.delete('/users/:userId(\\d+)',				sessionController.loginRequired, userController.destroy);	//borrar cuenta
 
 //GESTION DE QUIZZES
 router.get('/quizzes.:format?', 					quizController.index);
 router.get('/quizzes/:quizId(\\d+).:format?', 		quizController.show);
 router.get('/quizzes/:quizId(\\d+)/check', 			quizController.check);
-router.get('/quizzes/new',							quizController.new);
-router.post('/quizzes', 							quizController.create);
-router.get('/quizzes/:quizId(\\d+)/edit',			quizController.edit);
-router.post('/quizzes/:quizId(\\d+)',				quizController.update);
-router.delete('/quizzes/:quizId(\\d+)', 			quizController.destroy);
+router.get('/quizzes/new',							sessionController.loginRequired, quizController.new);
+router.post('/quizzes', 							sessionController.loginRequired, quizController.create);
+router.get('/quizzes/:quizId(\\d+)/edit',			sessionController.loginRequired, quizController.edit);
+router.post('/quizzes/:quizId(\\d+)',				sessionController.loginRequired, quizController.update);
+router.delete('/quizzes/:quizId(\\d+)', 			sessionController.loginRequired, quizController.destroy);
 
 //GESTION DE COMENTARIOS
-router.get('/quizzes/:quizId(\\d+)/comments/new',	commentController.new);
-router.post('/quizzes/:quizId(\\d+)/comments',		commentController.create);
+router.get('/quizzes/:quizId(\\d+)/comments/new',	sessionController.loginRequired, commentController.new);
+router.post('/quizzes/:quizId(\\d+)/comments',		sessionController.loginRequired, commentController.create);
 
 //GESTION DE AUTORES
 router.get('/author', function(req, res, next){
